@@ -25,4 +25,30 @@ RSpec.describe CsCertificates::QrCode do
       expect{ CsCertificates::QrCode.new }.to raise_error(ArgumentError)
     end
   end
+
+  describe "CsCertificates::QrCode#generate" do
+    it "calls new on qr_generator" do
+      rqrcode_double = double('RQRCode')
+      generator = double('QRGenerator', new: rqrcode_double)
+      allow(rqrcode_double).to receive(:as_png)
+
+      expect(generator).to receive(:new).with(qrcode_attributes[:url])
+      qrcode = CsCertificates::QrCode.new url: qrcode_attributes[:url], qr_generator: generator
+      qrcode.generate
+    end
+    it "calls as_png on qr_generator" do
+      rqrcode_double = double('RQRCode')
+      generator = double('QRGenerator', new: rqrcode_double)
+
+      expect(rqrcode_double).to receive(:as_png).with( 
+        size: CsCertificates::QrCode::DEFAULT_SIZE, 
+        border_modules: CsCertificates::QrCode::DEFAULT_BORDER_MODULES 
+      )
+      qrcode = CsCertificates::QrCode.new url: qrcode_attributes[:url], qr_generator: generator
+      qrcode.generate
+    end
+    it "returns a ChunkyPNG::Image instance" do
+      expect(qrcode.generate).to be_instance_of(ChunkyPNG::Image)
+    end
+  end
 end
