@@ -6,12 +6,12 @@ require "cs_certificates/version"
 Gem::Specification.new do |spec|
   spec.name          = "cs_certificates"
   spec.version       = CsCertificates::VERSION
-  spec.authors       = ["TODO: Write your name"]
-  spec.email         = ["TODO: Write your email address"]
+  spec.authors       = ["Tanner Jones"]
+  spec.email         = ["jonesjoe@ecu.edu"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Generates the certificates of completion for CollegeSTAR.org}
+  spec.description   = %q{Takes assessment results from College STAR and generates certificates.}
+  spec.homepage      = "https://github.com/CollegeSTAR/cs_certificates"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
