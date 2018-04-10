@@ -7,7 +7,7 @@ class UdlModuleCertificate < Certificate
   end
 
   def build_pdf
-    @pdf.text = "This is a test pdf."
+    @pdf.text "This is a test pdf."
   end
 end
 end
